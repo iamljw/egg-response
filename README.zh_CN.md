@@ -24,44 +24,53 @@
 Description here.
 -->
 
-## Install
+## 依赖说明
 
-```bash
-$ npm i egg-response --save
-```
+### 依赖的 egg 版本
 
-## Usage
+egg-response 版本 | egg 1.x
+--- | ---
+1.x | 😁
+0.x | ❌
+
+### 依赖的插件
+<!--
+
+如果有依赖其它插件，请在这里特别说明。如
+
+- security
+- multipart
+
+-->
+
+## 开启插件
 
 ```js
-// {app_root}/config/plugin.js
+// config/plugin.js
 exports.response = {
   enable: true,
   package: 'egg-response',
 };
 ```
-- create a successful response
+
+## 使用方法
+- 创建一个成功的响应
 ```
 ctx.createSuccessResponse(data[,code]);
 ```
-- create a failed response
+- 创建一个失败的响应
 ```
 ctx.createFailedResponse([message[,code]]);
 ```
 
-## Configuration
+## 详细配置
 
-```js
-// {app_root}/config/config.default.js
-exports.response = {
-};
-```
-
-see [config/config.default.js](config/config.default.js) for more detail.
+请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
 
 
-## Questions & Suggestions
+## 提问交流
 
-Please open an issue [here](https://github.com/iamljw/egg-response/issues).
+请到 [egg issues](https://github.com/iamljw/egg-response/issues) 异步交流。
 
 ## License
 
