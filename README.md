@@ -39,14 +39,56 @@ exports.response = {
   package: 'egg-response',
 };
 ```
-- create a successful response
+## where to use
+```js
+// {app_root}/app/controller/post.js
+
+ctx.successful(data[,code]);
+
+// or
+
+ctx.failed([message[,code]]);
 ```
-ctx.createSuccessResponse(data[,code]);
+## API
+### ctx.successful(data[,code])
+>create a successful response
+
+Parameter  
+  - **data** -response returned data
+  - **code(optional)** -response status code,default value is `200`
+
+return value  
+  - **will be in json format,as follows:**
+```json
+{
+  "success":true,
+  "data":"String,Object,Array,int...Any data you want to return "
+}
 ```
-- create a failed response
+
+### ctx.failed([message[,code]])
+>create a failed response
+
+Parameter  
+  - **message** -error message
+  - **code(optional)** -response status code,default value is `422`
+
+return value  
+  - **will be in json format,as follows:**
+```json
+{
+  "success":false,
+  "message":"Any message you want to return"
+}
 ```
-ctx.createFailedResponse([message[,code]]);
-```
+
+## deprecated(v1.1.0)
+
+### ~~ctx.createSuccessResponse(data[,code])~~
+
+**and**
+
+### ~~ctx.createFailedResponse([message[,code]])~~
 
 ## Configuration
 

@@ -1,6 +1,6 @@
 {
   "name": "egg-response",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "response plugin for egg",
   "eggPlugin": {
     "name": "response"
@@ -9,7 +9,11 @@
     "egg",
     "eggPlugin",
     "egg-plugin",
-    "response"
+    "response",
+    "context",
+    "controller",
+    "json",
+    "restful"
   ],
   "dependencies": {},
   "devDependencies": {

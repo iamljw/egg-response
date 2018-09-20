@@ -33,15 +33,11 @@ egg-response 版本 | egg 1.x
 1.x | 😁
 0.x | ❌
 
-### 依赖的插件
-<!--
+## 安装
 
-如果有依赖其它插件，请在这里特别说明。如
-
-- security
-- multipart
-
--->
+```bash
+$ npm i egg-response --save
+```
 
 ## 开启插件
 
@@ -52,16 +48,56 @@ exports.response = {
   package: 'egg-response',
 };
 ```
+## 在哪里使用
+```js
+// {app_root}/app/controller/post.js
 
-## 使用方法
-- 创建一个成功的响应
+ctx.successful(data[,code]);
+
+// 或
+
+ctx.failed([message[,code]]);
 ```
-ctx.createSuccessResponse(data[,code]);
+## API
+### ctx.successful(data[,code])
+>创建一个成功的响应
+
+参数  
+  - **data** -响应返回的数据
+  - **code(可选)** -响应状态码,默认值是 `200`
+
+返回值  
+  - **将会是json格式,如下:**
+```json
+{
+  "success":true,
+  "data":"String,Object,Array,int...任何你想要返回的数据 "
+}
 ```
-- 创建一个失败的响应
+
+### ctx.failed([message[,code]])
+>创建一个失败的响应
+
+参数  
+  - **message** -错误信息
+  - **code(optional)** -响应状态码,默认值是 `422`
+
+返回值  
+  - **将会是json格式,如下:**
+```json
+{
+  "success":false,
+  "message":"任何你想返回的信息"
+}
 ```
-ctx.createFailedResponse([message[,code]]);
-```
+
+## 过时的(v1.1.0)
+
+### ~~ctx.createSuccessResponse(data[,code])~~
+
+**和**
+
+### ~~ctx.createFailedResponse([message[,code]])~~
 
 ## 详细配置
 
