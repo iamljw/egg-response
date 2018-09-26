@@ -43,20 +43,20 @@ $ npm i egg-response --save
 
 ```js
 // config/plugin.js
-Exports.response = {
-  Enable: true,
-  Package: 'egg-response',
+exports.response = {
+  enable: true,
+  package: 'egg-response',
 };
 ```
 ## Where to use
 ```js
 // {app_root}/app/controller/post.js
 
-Ctx.successful(data[,options]);
+ctx.successful(data[,options]);
 
 // or
 
-Ctx.failed([options]);
+ctx.failed([options]);
 ```
 ## API
 ### ctx.successful(data[,options])
@@ -71,9 +71,9 @@ Parameter
 
 Example  
 ``` js
-Ctx.successful([1,2,3],{
-  Addition: {
-    Info: 'Additional message'
+ctx.successful([1,2,3],{
+  addition: {
+    info: 'Additional message'
   }
 });
 ```  
@@ -97,7 +97,7 @@ Parameter
 
 Example  
 ```js
-Ctx.failed({ message: 'There is no such category' });
+ctx.failed({ message: 'There is no such category' });
 ```
   - Returns the result,**will be in json format, as follows:**  
 ```json
