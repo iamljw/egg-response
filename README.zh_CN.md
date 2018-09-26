@@ -65,7 +65,8 @@ ctx.failed([options]);
 参数  
   - **data** -响应返回的数据
   - **options(可选)** -`Object`，有以下可选属性:
-    - code -`int`，响应状态码，默认值为200，
+    - isData -`boolean`,是否返回数据，默认值为`true`,如果设置为false，返回的json字段`data`会被`message`替代
+    - code -`int`，响应状态码，默认值为`200`
     - addition -`Object`，附加信息
 
 示例  
@@ -93,6 +94,7 @@ ctx.successful([1,2,3],{
     - message -错误提示信息，默认值为'Request error'
     - code -响应状态码，默认值为`422`
     - addition -追加消息
+
 示例  
 ```js
 ctx.failed({ message:'没有该类目' });

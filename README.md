@@ -65,7 +65,8 @@ Ctx.failed([options]);
 Parameter  
   - **data** - the data returned by the response
   - **options (optional)** -`Object` with the following optional attributes:  
-    - code -`int`, response status code, default value is 200,
+    - isData -`boolean`, whether to return data, the default value is `true`,If set to false, the returned json field `data` will be replaced by `message`
+    - code -`int`, response status code, default value is `200`
     - addition -`Object`, additional information
 
 Example  
@@ -93,6 +94,7 @@ Parameter
     - message - error message, default value is 'Request error'
     - code - response status code, default value is `422`
     - addition - append message
+
 Example  
 ```js
 Ctx.failed({ message: 'There is no such category' });
