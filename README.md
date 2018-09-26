@@ -24,86 +24,103 @@
 Description here.
 -->
 
-## Install
+## Dependency Description
+
+### Dependent egg version
+
+Egg-response version | egg 1.x
+--- | ---
+1.x | 😁
+0.x | ❌
+
+## Installation
 
 ```bash
 $ npm i egg-response --save
 ```
 
-## Usage
+## Open the plugin
 
 ```js
-// {app_root}/config/plugin.js
-exports.response = {
-  enable: true,
-  package: 'egg-response',
+// config/plugin.js
+Exports.response = {
+  Enable: true,
+  Package: 'egg-response',
 };
 ```
-## where to use
+## Where to use
 ```js
 // {app_root}/app/controller/post.js
 
-ctx.successful(data[,code]);
+Ctx.successful(data[,options]);
 
 // or
 
-ctx.failed([message[,code]]);
+Ctx.failed([options]);
 ```
 ## API
-### ctx.successful(data[,code])
->create a successful response
+### ctx.successful(data[,options])
+>Create a successful response
 
 Parameter  
-  - **data** -response returned data
-  - **code(optional)** -response status code,default value is `200`
+  - **data** - the data returned by the response
+  - **options (optional)** -`Object` with the following optional attributes:  
+    - code -`int`, response status code, default value is 200,
+    - addition -`Object`, additional information
 
-return value  
-  - **will be in json format,as follows:**
+Example  
+``` js
+Ctx.successful([1,2,3],{
+  Addition: {
+    Info: 'Additional message'
+  }
+});
+```  
+  - Returns the result, **will be in json format, as follows:**  
 ```json
 {
-  "success":true,
-  "data":"String,Object,Array,int...Any data you want to return "
+  "success": true,
+  "data": [1,2,3],
+  "info": "Additional message"
 }
 ```
 
-### ctx.failed([message[,code]])
->create a failed response
+### ctx.failed([options])
+>Create a failed response
 
 Parameter  
-  - **message** -error message
-  - **code(optional)** -response status code,default value is `422`
-
-return value  
-  - **will be in json format,as follows:**
+  - **options (optional)** -`Object` with the following optional attributes:
+    - message - error message, default value is 'Request error'
+    - code - response status code, default value is `422`
+    - addition - append message
+Example  
+```js
+Ctx.failed({ message: 'There is no such category' });
+```
+  - Returns the result,**will be in json format, as follows:**  
 ```json
 {
-  "success":false,
-  "message":"Any message you want to return"
+  "success": false,
+  "message": "There is no such category"
 }
 ```
 
-## deprecated(v1.1.0)
+## Outdated (v1.1.0)
 
 ### ~~ctx.createSuccessResponse(data[,code])~~
 
-**and**
+**with**
 
 ### ~~ctx.createFailedResponse([message[,code]])~~
 
-## Configuration
+## Detailed configuration
 
-```js
-// {app_root}/config/config.default.js
-exports.response = {
-};
-```
-
-see [config/config.default.js](config/config.default.js) for more detail.
+Go to [config/config.default.js](config/config.default.js) for detailed configuration item descriptions.
 
 
-## Questions & Suggestions
+## Asking questions
 
-Please open an issue [here](https://github.com/iamljw/egg-response/issues).
+Please go to [egg issues] (https://github.com/iamljw/egg-response/issues) for asynchronous communication.
 
 ## License
 

@@ -52,42 +52,56 @@ exports.response = {
 ```js
 // {app_root}/app/controller/post.js
 
-ctx.successful(data[,code]);
+ctx.successful(data[,options]);
 
 // 或
 
-ctx.failed([message[,code]]);
+ctx.failed([options]);
 ```
 ## API
-### ctx.successful(data[,code])
+### ctx.successful(data[,options])
 >创建一个成功的响应
 
 参数  
   - **data** -响应返回的数据
-  - **code(可选)** -响应状态码,默认值是 `200`
+  - **options(可选)** -`Object`，有以下可选属性:
+    - code -`int`，响应状态码，默认值为200，
+    - addition -`Object`，附加信息
 
-返回值  
-  - **将会是json格式,如下:**
+示例  
+``` js
+ctx.successful([1,2,3],{
+  addition: {
+    info: '追加的消息'
+  }
+});
+```
+  - 返回结果，**将会是json格式,如下:**
 ```json
 {
   "success":true,
-  "data":"String,Object,Array,int...任何你想要返回的数据 "
+  "data": [1,2,3],
+  "info":"追加的消息"
 }
 ```
 
-### ctx.failed([message[,code]])
+### ctx.failed([options])
 >创建一个失败的响应
 
 参数  
-  - **message** -错误信息
-  - **code(optional)** -响应状态码,默认值是 `422`
-
-返回值  
-  - **将会是json格式,如下:**
+  - **options(可选)** -`Object`,有以下可选属性：
+    - message -错误提示信息，默认值为'Request error'
+    - code -响应状态码，默认值为`422`
+    - addition -追加消息
+示例  
+```js
+ctx.failed({ message:'没有该类目' });
+```
+  - 返回结果，**将会是json格式,如下:**
 ```json
 {
   "success":false,
-  "message":"任何你想返回的信息"
+  "message":"没有该类目"
 }
 ```
 
