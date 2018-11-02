@@ -25,7 +25,7 @@ module.exports = {
      * @param {int} code 错误码
      * @param {object} addition 附加信息
      */
-    failed({ message = 'Request error', code = 422, addition = {} } = {}) {
+    failed({ message = 'Request error', code = 200, addition = {} } = {}) {
         this.status = code;
         this.body = Object.assign({ success: false, message }, addition);
     },
