@@ -1,5 +1,7 @@
 # egg-response
 
+English|[中文](./README.zh_CN.md)
+
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
@@ -37,6 +39,8 @@ Egg-response version | egg 1.x
 
 ```bash
 $ npm i egg-response --save
+or
+$ yarn add egg-response
 ```
 
 ## Open the plugin
@@ -67,13 +71,13 @@ Parameter
   - **options (optional)** -`Object` with the following optional attributes:  
     - isData -`boolean`, whether to return data, the default value is `true`,If set to false, the returned json field `data` will be replaced by `message`
     - code -`int`, response status code, default value is `200`
-    - addition -`Object`, additional information
+    - extra -`Object`, additional information
 
 Example  
 ``` js
 ctx.successful([1,2,3],{
-  addition: {
-    info: 'Additional message'
+  extra: {
+    xxx: 'Additional message'
   }
 });
 ```  
@@ -81,8 +85,9 @@ ctx.successful([1,2,3],{
 ```json
 {
   "success": true,
+  "code": 200,
   "data": [1,2,3],
-  "info": "Additional message"
+  "xxx": "Additional message"
 }
 ```
 
@@ -92,8 +97,8 @@ ctx.successful([1,2,3],{
 Parameter  
   - **options (optional)** -`Object` with the following optional attributes:
     - message - error message, default value is 'Request error'
-    - code - response status code, default value is `422`
-    - addition - append message
+    - code - response status code, default value is `500`
+    - extra - append message
 
 Example  
 ```js
@@ -102,6 +107,7 @@ ctx.failed({ message: 'There is no such category' });
   - Returns the result,**will be in json format, as follows:**  
 ```json
 {
+  "code": 500,
   "success": false,
   "message": "There is no such category"
 }

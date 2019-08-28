@@ -1,5 +1,7 @@
 # egg-response
 
+[English](./README.md)|中文
+
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
@@ -36,7 +38,9 @@ egg-response 版本 | egg 1.x
 ## 安装
 
 ```bash
-$ npm i egg-response --save
+$ npm i egg-response
+或者
+$ yarn add egg-response
 ```
 
 ## 开启插件
@@ -48,13 +52,13 @@ exports.response = {
   package: 'egg-response',
 };
 ```
-## 在哪里使用
+## 使用场景
 ```js
 // {app_root}/app/controller/post.js
 
 ctx.successful(data[,options]);
 
-// 或
+// 或者
 
 ctx.failed([options]);
 ```
@@ -67,22 +71,23 @@ ctx.failed([options]);
   - **options(可选)** -`Object`，有以下可选属性:
     - isData -`boolean`,是否返回数据，默认值为`true`,如果设置为false，返回的json字段`data`会被`message`替代
     - code -`int`，响应状态码，默认值为`200`
-    - addition -`Object`，附加信息
+    - extra -`Object`，附加信息
 
 示例  
 ``` js
 ctx.successful([1,2,3],{
-  addition: {
-    info: '追加的消息'
+  extra: {
+    xxx: '追加的消息'
   }
 });
 ```
   - 返回结果，**将会是json格式,如下:**
 ```json
 {
-  "success":true,
+  "code": 200,
+  "success": true,
   "data": [1,2,3],
-  "info":"追加的消息"
+  "xxx": "追加的消息"
 }
 ```
 
@@ -92,8 +97,8 @@ ctx.successful([1,2,3],{
 参数  
   - **options(可选)** -`Object`,有以下可选属性：
     - message -错误提示信息，默认值为'Request error'
-    - code -响应状态码，默认值为`422`
-    - addition -追加消息
+    - code -响应状态码，默认值为`500`
+    - extra -追加消息
 
 示例  
 ```js
@@ -102,8 +107,9 @@ ctx.failed({ message:'没有该类目' });
   - 返回结果，**将会是json格式,如下:**
 ```json
 {
-  "success":false,
-  "message":"没有该类目"
+  "code": 500,
+  "success": false,
+  "message": "没有该类目"
 }
 ```
 
